@@ -1,4 +1,4 @@
-﻿namespace SimpleExample {
+﻿namespace Demos {
 
     open Microsoft.Quantum.Canon;
     open Microsoft.Quantum.Convert;
@@ -13,7 +13,8 @@
         //HadamardExample();
         //HadamardWithLoopExample();
         //EntanglementExample();
-        EntanglementWithLoopExample();
+        //EntanglementWithLoopExample();
+        DeutschAlgorithmExample();
     }
 
     operation HadamardExample() : Unit {
