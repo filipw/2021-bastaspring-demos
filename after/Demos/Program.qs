@@ -5,16 +5,17 @@
     open Microsoft.Quantum.Diagnostics;
     open Microsoft.Quantum.Intrinsic;
     open Microsoft.Quantum.Measurement;
+    open Microsoft.Quantum.Preparation;
     
 
     @EntryPoint()
     operation Start() : Unit {
-        //BitflipExample();
+        BitflipExample();
         //HadamardExample();
         //HadamardWithLoopExample();
         //EntanglementExample();
         //EntanglementWithLoopExample();
-        DeutschAlgorithmExample();
+        //DeutschAlgorithmExample();
     }
 
     operation HadamardExample() : Unit {
@@ -49,9 +50,14 @@
 
     operation EntanglementExample() : Unit {
         use (control, target) = (Qubit(), Qubit());
+        DumpMachine();
 
         H(control);
         CNOT(control, target);
+
+        DumpMachine();
+
+        //PrepareEntangledState([control], [target]);
         
         let resultControl = ResultAsBool(MResetZ(control));
         let resultTarget = ResultAsBool(MResetZ(target));
