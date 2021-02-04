@@ -1,4 +1,4 @@
-﻿namespace Demos {
+﻿namespace Lib {
 
     open Microsoft.Quantum.Canon;
     open Microsoft.Quantum.Convert;

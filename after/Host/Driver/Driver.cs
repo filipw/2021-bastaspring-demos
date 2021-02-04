@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Demos;
+using Lib;
 using Microsoft.Quantum.Simulation.Simulators;
 
 namespace CSharpHost
