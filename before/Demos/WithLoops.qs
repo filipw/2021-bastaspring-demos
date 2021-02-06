@@ -7,6 +7,7 @@ namespace Demos {
     open Microsoft.Quantum.Logical;
     open Microsoft.Quantum.Math;
     open Microsoft.Quantum.Measurement;
+    open Microsoft.Quantum.Preparation;
     open Microsoft.Quantum.Random;
 
     operation HadamardWithLoopExample() : Unit {
@@ -14,7 +15,7 @@ namespace Demos {
         for i in 1..4096 {
             use qubit = Qubit();
             H(qubit);
-            let result = MResetZ(qubit) == One ? 1 | 0;
+            let result = MResetX(qubit) == One ? 1 | 0;
             set resultsTotal += result;
         }
         Message($"Measured 1s: {IntAsString(resultsTotal)}");
@@ -30,8 +31,7 @@ namespace Demos {
         for i in 1..4096 {
             use (control, target) = (Qubit(), Qubit());
 
-            H(control);
-            CNOT(control, target);
+            PrepareEntangledState([control], [target]);
             
             let resultControl = ResultAsBool(MResetZ(control));
             let resultTarget = ResultAsBool(MResetZ(target));
