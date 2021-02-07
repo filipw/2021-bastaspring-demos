@@ -31,7 +31,8 @@ namespace Demos {
         for i in 1..4096 {
             use (control, target) = (Qubit(), Qubit());
 
-            PrepareEntangledState([control], [target]);
+            H(control);
+            CNOT(control, target);
             
             let resultControl = ResultAsBool(MResetZ(control));
             let resultTarget = ResultAsBool(MResetZ(target));
