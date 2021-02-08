@@ -15,7 +15,7 @@ namespace Demos {
         for i in 1..4096 {
             use qubit = Qubit();
             H(qubit);
-            let result = MResetX(qubit) == One ? 1 | 0;
+            let result = MResetZ(qubit) == One ? 1 | 0;
             set resultsTotal += result;
         }
         Message($"Measured 1s: {IntAsString(resultsTotal)}");
