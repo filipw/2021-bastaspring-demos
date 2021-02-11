@@ -11,12 +11,8 @@ namespace CSharpHost
         static async Task Main(string[] args)
         {
             using var qsim = new QuantumSimulator();
-
-            var randomBits = await RandomNumberGenerator.Run(qsim);
-            var bitString = string.Join("", randomBits.Select(x => x ? 1 : 0));
-
-            Console.WriteLine($"Generated random bit string: {bitString}");
-            Console.WriteLine($"Generated random uint32: {Convert.ToUInt32(bitString, 2)}");
+            var randomUInt16 = await RandomNumberGenerator.Run(qsim);
+            Console.WriteLine($"Quantum generated random uint16: {randomUInt16}");
         }
     }
 }

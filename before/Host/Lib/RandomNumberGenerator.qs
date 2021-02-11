@@ -1,5 +1,6 @@
 ﻿namespace Lib {
 
+    open Microsoft.Quantum.Arithmetic;
     open Microsoft.Quantum.Canon;
     open Microsoft.Quantum.Convert;
     open Microsoft.Quantum.Diagnostics;
@@ -7,16 +8,16 @@
     open Microsoft.Quantum.Measurement;
     open Microsoft.Quantum.Preparation;
     
-    operation RandomNumberGenerator() : Bool[] {
-        mutable randomBits = new Bool[32];
+    operation RandomNumberGenerator() : Int {
+        use qubits = Qubit[16];
+        ApplyToEach(H, qubits);
+
+        // create a QPU register
+        let register = LittleEndian(qubits);
+
+        // measure the entire register to retrieve the integer
+        let randomNumber = MeasureInteger(register);
         
-        for idx in 0..31 {
-            use qubit = Qubit();
-            H(qubit);                
-            let result = MResetZ(qubit);
-            set randomBits w/= idx <- result == One;
-        }
-        
-        return randomBits;
+        return randomNumber;
     }  
 }
