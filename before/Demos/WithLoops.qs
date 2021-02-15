@@ -1,5 +1,6 @@
 namespace Demos {
 
+    open Microsoft.Quantum.Arithmetic;
     open Microsoft.Quantum.Arrays;
     open Microsoft.Quantum.Canon;
     open Microsoft.Quantum.Convert;
@@ -47,4 +48,26 @@ namespace Demos {
         Message($"Measured 10: {IntAsString(result10)}");
         Message($"Measured 11: {IntAsString(result11)}");
     }    
+
+    operation EntangledRandomNumberGeneration() : Unit {
+        mutable agreedTotal = 0;
+        for i in 1..10000 {
+            use control = Qubit[8];
+            use target = Qubit[8];
+
+            PrepareEntangledState(control, target);
+            let controlRegister = LittleEndian(control);
+            let targetRegister = LittleEndian(target);
+
+            let resultControl = MeasureInteger(controlRegister);
+            let resultTarget = MeasureInteger(targetRegister);
+
+            Message($"Control result {resultControl}, Target result {resultTarget}");
+            if (resultControl == resultTarget) {
+                set agreedTotal += 1;
+            }
+        }
+
+        Message($"Measurements agreed: {agreedTotal}");
+    }
 }
