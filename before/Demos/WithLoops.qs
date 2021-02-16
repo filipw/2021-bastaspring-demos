@@ -51,11 +51,12 @@ namespace Demos {
 
     operation EntangledRandomNumberGeneration() : Unit {
         mutable agreedTotal = 0;
-        for i in 1..10000 {
+        for i in 1..100 {
             use control = Qubit[8];
             use target = Qubit[8];
 
             PrepareEntangledState(control, target);
+
             let controlRegister = LittleEndian(control);
             let targetRegister = LittleEndian(target);
 
