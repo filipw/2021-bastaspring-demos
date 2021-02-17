@@ -13,6 +13,6 @@
         use qubit = Qubit();
         H(qubit);
         let result = MResetZ(qubit) == One ? 1 | 0;
-        Message($"Measured: {IntAsString(result)}");
+        Message($"Measured: {result}");
     }
 }

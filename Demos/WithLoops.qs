@@ -19,8 +19,8 @@ namespace Demos {
             let result = MResetZ(qubit) == One ? 1 | 0;
             set resultsTotal += result;
         }
-        Message($"Measured 1s: {IntAsString(resultsTotal)}");
-        Message($"Measured 0s: {IntAsString(4096 - resultsTotal)}");
+        Message($"Measured 1s: {resultsTotal}");
+        Message($"Measured 0s: {4096 - resultsTotal}");
     }
 
     operation EntanglementWithLoopExample() : Unit {
@@ -43,10 +43,10 @@ namespace Demos {
             if (resultControl and resultTarget) { set result11 += 1; }
         }
 
-        Message($"Measured 00: {IntAsString(result00)}");
-        Message($"Measured 01: {IntAsString(result01)}");
-        Message($"Measured 10: {IntAsString(result10)}");
-        Message($"Measured 11: {IntAsString(result11)}");
+        Message($"Measured 00: {result00}");
+        Message($"Measured 01: {result01}");
+        Message($"Measured 10: {result10}");
+        Message($"Measured 11: {result11}");
     }    
 
     operation EntangledRandomNumberGeneration() : Unit {
